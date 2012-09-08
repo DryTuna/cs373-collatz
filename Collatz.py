@@ -27,6 +27,13 @@ def collatz_read (r, a) :
     assert a[1] > 0
     return True
 
+# -
+# f
+# -
+
+def f (n) :
+    return n + (n >> 1) + 1
+
 # ------------
 # collatz_eval
 # ------------
@@ -39,8 +46,20 @@ def collatz_eval (i, j) :
     """
     assert i > 0
     assert j > 0
-    # <your code>
+
     v = 1
+    for x in range(i, j) :
+        curr_length = 1
+        while(x > 1):
+            if(x%2 == 0) :
+                x = x >> 1
+                curr_length += 1
+            else :
+                x = f(x)
+                curr_length += 2
+        if (curr_length > v):
+            v = curr_length
+
     assert v > 0
     return v
 
