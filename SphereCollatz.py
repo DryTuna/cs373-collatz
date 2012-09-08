@@ -251,14 +251,6 @@ def collatz_read (r, a) :
     assert a[1] > 0
     return True
 
-# -
-# f
-# -
-
-def f (n) :
-    assert n%2 == 1
-    return n + (n >> 1) + 1
-
 # ------------
 # collatz_eval
 # ------------
@@ -276,29 +268,31 @@ def collatz_eval (i, j) :
     if(i > j):
         temp = j
         j = i
-        i = temp    
+        i = temp
+
+    assert i <= j
 
     index_a = i//1000
     index_b = j//1000
     if((i<=num_cache[index_a]) and (j>=num_cache[index_b])):
-	temp = cycle_cache[index_a]
-	for x in range(index_a+1, index_b):
-	    if(temp < cycle_cache[x]):
-		temp = cycle_cache[x]
-	return temp
+	    temp = cycle_cache[index_a]
+	    for x in range(index_a+1, index_b):
+	        if(temp < cycle_cache[x]):
+		        temp = cycle_cache[x]
+	    return temp
 
     if(i <= j/2):
-	i = j/2 + 1;
+	    i = j/2 + 1
     
     for x in range(i, j):
-	    y = x;
-	    curr_length = 1;
+	    y = x
+	    curr_length = 1
 	    while (y > 1):
 	        if(y%2 == 0) :
 	    	    y = y >> 1 
 	    	    curr_length += 1	    
 	        else:
-	            y = f(y)
+	            y += (y >> 1) + 1
 	    	    curr_length += 2		    
 	    if(curr_length > v):
 	        v = curr_length
@@ -334,3 +328,15 @@ def collatz_solve (r, w) :
     while collatz_read(r, a) :
         v = collatz_eval(a[0], a[1])
         collatz_print(w, a[0], a[1], v)
+
+# -------
+# imports
+# -------
+
+import sys
+
+# ----
+# main
+# ----
+
+collatz_solve(sys.stdin, sys.stdout)
