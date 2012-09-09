@@ -81,18 +81,37 @@ def collatz_eval (i, j) :
         i = temp    
 
     assert i <= j
+
     index_a = int(i/10000)
     index_b = int((j-1)/10000)
-#    print str(i) +" "+ str(index_a) +" "+ str(index_b) +"\n"
 
-    if((i<=num_cache[index_a]) and (j>=num_cache[index_b])):
-        temp = cycle_cache[index_a]
-        for x in range(index_a+1, index_b+1):
-            if(temp < cycle_cache[int(x)]):
-                temp = cycle_cache[int(x)]
-        return temp
+    if (index_a == index_b) :
+        if (i > num_cache[index_a] or j < num_cache[index_a]) :
+            return collatz_regular_eval (i, j)
+    
+    if (index_a + 1 == index_b) :
+        if (i > num_cache[index_a] or j < num_cache[index_b]) :
+            return collatz_regular_eval (i, j)
 
-    return collatz_regular_eval (i, j)
+    max_a = cycle_cache[index_a]
+    max_b = cycle_cache[index_b]
+
+    if (i > num_cache[index_a]) :
+        max_a = collatz_regular_eval (num_cache[index_a], i)
+    if (j < num_cache[index_b]) :
+        max_b = collatz_regular_eval ((10000*index_b)+1, j)
+    if (max_a < max_b) :
+        max_a = max_b
+
+    temp = max_a
+    for x in range(index_a+1, index_b+1):
+        if(temp < cycle_cache[int(x)]):
+            temp = cycle_cache[int(x)]
+
+    if (temp < max_a) :
+        temp = max_a
+    
+    return temp
 
 # --------------------
 # collatz_regular_eval
