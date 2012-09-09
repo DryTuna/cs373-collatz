@@ -1,0 +1,56 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Collatz</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Collatz</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/drytuna/Documents/cs373/Collatz/Collatz.py">/home/drytuna/Documents/cs373/Collatz/Collatz.py</a></font></td></tr></table>
+    <p><tt>cycle_cache&nbsp;stores&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length&nbsp;of&nbsp;every&nbsp;10000&nbsp;numbers<br>
+num_cache&nbsp;stores&nbsp;the&nbsp;corresponding&nbsp;number&nbsp;of&nbsp;the&nbsp;highest&nbsp;cycle&nbsp;length</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-collatz_eval"><strong>collatz_eval</strong></a>(i, j)</dt><dd><tt>this&nbsp;function&nbsp;attempts&nbsp;to&nbsp;use&nbsp;the&nbsp;cache&nbsp;before&nbsp;having&nbsp;to&nbsp;perform&nbsp;a&nbsp;cycle&nbsp;calculation<br>
+i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+j&nbsp;is&nbsp;the&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+index_a&nbsp;points&nbsp;to&nbsp;the&nbsp;value&nbsp;in&nbsp;num_cache&nbsp;that&nbsp;is&nbsp;closest&nbsp;to&nbsp;i<br>
+index_b&nbsp;points&nbsp;to&nbsp;the&nbsp;value&nbsp;in&nbsp;num_cache&nbsp;that&nbsp;is&nbsp;closest&nbsp;to&nbsp;j<br>
+max_a&nbsp;is&nbsp;the&nbsp;highest&nbsp;cycle&nbsp;length&nbsp;between&nbsp;i&nbsp;and&nbsp;num_cache[index_a]&nbsp;inclusive<br>
+max_b&nbsp;is&nbsp;the&nbsp;highest&nbsp;cycle&nbsp;length&nbsp;between&nbsp;num_cache[index_b]&nbsp;and&nbsp;j&nbsp;inclusive<br>
+temp&nbsp;stores&nbsp;the&nbsp;current&nbsp;highest&nbsp;cycle&nbsp;length<br>
+return&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length</tt></dd></dl>
+ <dl><dt><a name="-collatz_print"><strong>collatz_print</strong></a>(w, i, j, v)</dt><dd><tt>prints&nbsp;the&nbsp;values&nbsp;of&nbsp;i,&nbsp;j,&nbsp;and&nbsp;v<br>
+w&nbsp;is&nbsp;a&nbsp;writer<br>
+i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+j&nbsp;is&nbsp;the&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+v&nbsp;is&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length</tt></dd></dl>
+ <dl><dt><a name="-collatz_read"><strong>collatz_read</strong></a>(r, a)</dt><dd><tt>reads&nbsp;two&nbsp;ints&nbsp;into&nbsp;a[0]&nbsp;and&nbsp;a[1]<br>
+r&nbsp;is&nbsp;a&nbsp;&nbsp;reader<br>
+a&nbsp;is&nbsp;an&nbsp;array&nbsp;of&nbsp;int<br>
+return&nbsp;true&nbsp;if&nbsp;that&nbsp;succeeds,&nbsp;false&nbsp;otherwise</tt></dd></dl>
+ <dl><dt><a name="-collatz_regular_eval"><strong>collatz_regular_eval</strong></a>(i, j)</dt><dd><tt>i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+j&nbsp;is&nbsp;the&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+return&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length&nbsp;in&nbsp;the&nbsp;range&nbsp;[i,&nbsp;j]</tt></dd></dl>
+ <dl><dt><a name="-collatz_solve"><strong>collatz_solve</strong></a>(r, w)</dt><dd><tt>read,&nbsp;eval,&nbsp;print&nbsp;loop<br>
+r&nbsp;is&nbsp;a&nbsp;reader<br>
+w&nbsp;is&nbsp;a&nbsp;writer</tt></dd></dl>
+ <dl><dt><a name="-f"><strong>f</strong></a>(n)</dt><dd><tt>computing&nbsp;(3n&nbsp;+&nbsp;1)/2<br>
+n&nbsp;must&nbsp;be&nbsp;odd</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>cycle_cache</strong> = [262, 279, 308, 324, 314, 340, 335, 351, 333, 333, 354, 349, 344, 344, 375, 383, 370, 347, 365, 360, ...]<br>
+<strong>num_cache</strong> = [6171, 17647, 26623, 35655, 45127, 52527, 60975, 77031, 87087, 91463, 106239, 115547, 129991, 135111, 142587, 156159, 160411, 173321, 180463, 195465, ...]</td></tr></table>
+</body></html>

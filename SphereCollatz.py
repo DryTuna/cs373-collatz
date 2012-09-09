@@ -16,6 +16,7 @@ cycle_cache = [262, 279, 308, 324, 314, 340, 335, 351, 333, 333,
 504, 411, 411, 424, 393, 424, 468, 437, 406, 468,
 406, 450, 450, 525, 419, 419, 388, 432, 445, 370,
 445, 476, 476, 507, 383, 414, 414, 458, 427, 396]
+
 num_cache = [6171, 17647, 26623, 35655, 45127, 52527, 60975, 77031, 87087, 91463,
 106239, 115547, 129991, 135111, 142587, 156159, 160411, 173321, 180463, 195465,
 206847, 216367, 225023, 230631, 240617, 254911, 263103, 270271, 288489, 298843,
@@ -55,9 +56,15 @@ def collatz_read (r, a) :
 
 def collatz_eval (i, j) :
     """
+    this function attempts to use the cache before having to perform a cycle calculation
     i is the beginning of the range, inclusive
     j is the end       of the range, inclusive
-    return the max cycle length in the range [i, j]
+    index_a points to the value in num_cache that is closest to i
+    index_b points to the value in num_cache that is closest to j
+    max_a is the highest cycle length between i and num_cache[index_a] inclusive
+    max_b is the highest cycle length between num_cache[index_b] and j inclusive
+    temp stores the current highest cycle length
+    return the max cycle length
     """
     assert i > 0
     assert j > 0
@@ -106,6 +113,11 @@ def collatz_eval (i, j) :
 # --------------------
 
 def collatz_regular_eval (i, j) :
+    """
+    i is the beginning of the range, inclusive
+    j is the end       of the range, inclusive
+    return the max cycle length in the range [i, j]
+    """
     assert i > 0
     assert j > 0
     v = 1
