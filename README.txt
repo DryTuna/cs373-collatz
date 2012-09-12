@@ -9,7 +9,7 @@ Last Name: Tran
 EID: dnt264
 E-mail: drytuna@gmail.com
 Estimated number of hours: 15
-Actual    number of hours: 10
+Actual    number of hours: 11
 
 Turnin CS Username: drytuna
 GitHub ID: DryTuna
@@ -19,7 +19,6 @@ Comments:
 It was easy to complete the stupid solution.
 The unit tests really saved times when developing a better cache.
 My solution used an eager cache.
-
 
 ---------------
 Code of Conduct

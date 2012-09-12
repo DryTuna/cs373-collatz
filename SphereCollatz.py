@@ -51,6 +51,27 @@ def collatz_read (r, a) :
     return True
 
 # ------------
+# cycle_length
+# ------------
+
+def cycle_length (n) :
+    """
+    computing cycle length of integer n
+    n must be greater than 0
+    """
+    assert n > 0
+    c = 1
+    while n > 1 :
+        if (n % 2) == 0 :
+            n = (n / 2)
+            c += 1
+        else :
+            n += (n >> 1) + 1
+            c += 2
+    assert c > 0
+    return c
+
+# ------------
 # collatz_eval
 # ------------
 
@@ -69,7 +90,6 @@ def collatz_eval (i, j) :
     assert i > 0
     assert j > 0
 
-    v = 1
     if(i > j):
         temp = j
         j = i
@@ -83,23 +103,20 @@ def collatz_eval (i, j) :
     if (index_a == index_b) :
         if (i > num_cache[index_a] or j < num_cache[index_a]) :
             return collatz_regular_eval (i, j)
-    
-    if (index_a + 1 == index_b) :
-        if (i > num_cache[index_a] or j < num_cache[index_b]) :
-            return collatz_regular_eval (i, j)
 
     max_a = cycle_cache[index_a]
     max_b = cycle_cache[index_b]
 
     if (i > num_cache[index_a]) :
-        max_a = collatz_regular_eval (num_cache[index_a], i)
+        index_a += 1
+        max_a = collatz_regular_eval (i, index_a*10000 - 1)
     if (j < num_cache[index_b]) :
-        max_b = collatz_regular_eval ((10000*index_b)+1, j)
+        max_b = collatz_regular_eval (10000*index_b, j)
     if (max_a < max_b) :
         max_a = max_b
 
-    temp = max_a
-    for x in range(index_a+1, index_b+1):
+    temp = 1
+    for x in range(index_a, index_b):
         if(temp < cycle_cache[int(x)]):
             temp = cycle_cache[int(x)]
 
@@ -121,21 +138,15 @@ def collatz_regular_eval (i, j) :
     assert i > 0
     assert j > 0
     v = 1
-    if(i <= j/2):
-        i = j/2 + 1
-    for x in range(i, j+1) :
-        y = x
-        curr_length = 1
-        while (y > 1):
-	        if(y%2 == 0) :
-	    	    y = y >> 1 
-	    	    curr_length += 1	    
-	        else:
-	            y += (y >> 1) + 1
-	    	    curr_length += 2		    
-        if(curr_length > v):
-            v = curr_length
 
+    if(i <= j >> 1):
+        i = j >> 1 + 1
+
+    for x in range(i, j+1) :
+        curr_length = cycle_length(int(x))		    
+        if curr_length > v :
+            v = curr_length
+  
     assert v > 0
     return v
 
