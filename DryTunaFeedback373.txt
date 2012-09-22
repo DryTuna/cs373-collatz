@@ -1,0 +1,25 @@
+-- Feedback for Project 1--
+
+	 student : Duy Tran
+
+Total: 65/65 - 0% = 65/65
+
+==== Scoring Breakdown =====
+
+Git Repository : 5/5
+
+Issue Tracker : 5/5
+
+Unit Tests : 15/15
+
+Acceptance Tests : 15/15
+
+Implementation : 15/15
+
+Sphere : 5/5
+
+Documentation : 5/5
+
+==== Comment ====
+0.Nice job on this project, code is clear and good.
+None missed file, n/a
